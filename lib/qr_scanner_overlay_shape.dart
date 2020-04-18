@@ -9,6 +9,7 @@ class QrScannerOverlayShape extends ShapeBorder {
   final double borderRadius;
   final double borderLength;
   final double cutOutSize;
+  final double top;
 
   QrScannerOverlayShape({
     this.borderColor = Colors.red,
@@ -17,6 +18,7 @@ class QrScannerOverlayShape extends ShapeBorder {
     this.borderRadius = 0,
     this.borderLength = 40,
     this.cutOutSize = 250,
+    this.top = 0,
   }) : assert(
             cutOutSize != null
                 ? cutOutSize != null
@@ -63,7 +65,7 @@ class QrScannerOverlayShape extends ShapeBorder {
   void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {
     final width = rect.width;
     final borderWidthSize = width / 2;
-    final height = rect.height;
+    final height = rect.height + top;
     final borderOffset = borderWidth / 2;
     final _borderLength = borderLength > cutOutSize / 2 + borderWidth * 2
         ? borderWidthSize / 2
